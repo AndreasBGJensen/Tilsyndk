@@ -1,6 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import {observer} from "mobx-react";
+import Institutions from "./stores/Institutions";
+
+const vuggestuer = new Institutions();
 
 function App() {
   return (
@@ -17,10 +23,13 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+
         </a>
+
+
       </header>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
