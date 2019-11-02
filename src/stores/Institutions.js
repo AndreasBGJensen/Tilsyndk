@@ -1,8 +1,14 @@
 import data from './test.json';
 import {decorate, observable} from "mobx";
+//This store is observable and holds the api connection
+
+
+
 
 export default class Institutions {
     TestList = ["100 meter skoven","7 springeren","Børnehaven Bøgely"];
+
+    Test = [{"name":"yes","link":"www.dr.dk","adress":"Thorsvej 42" }];
 
     kinderGardensKBH = data;
     /*kinderGardensKBH = [{Name:"100 meter skoven",Quality:"less wow"},
