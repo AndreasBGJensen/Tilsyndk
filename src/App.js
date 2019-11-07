@@ -6,26 +6,35 @@ import {observer} from "mobx-react";
 import Institutions from "./stores/Institutions";
 import LogIn from "./comtainer/LogIn";
 import Register from "./comtainer/Register"
-import {Form} from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import {TokenStore} from "./stores/TokenStore";
-import InstitutionView from './comtainer/InstitutionView'
+import {HashRouter as Router,Route} from "react-router-dom";
+import SearchInstitution from "./comtainer/SearchInstitution"
 
+import {Switch} from "react-router-dom"
+import Container from "react-bootstrap/Container";
 
-const tokenStore = new TokenStore();
 const vuggestuer = new Institutions();
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+class App extends React.Component{
 
-            <InstitutionView/>
-          <Register/>
+render()
+    {
+        return (
 
-      </header>
-    </div>
-  );
+
+
+
+            <Container>
+                <Router>
+                    <Switch>
+                        <Route path={"/register"} component={Register}/>
+                        <Route path={"/login"} component={LogIn}/>
+                        <Route path={"/search"} component={SearchInstitution}/>
+                    </Switch>
+                </Router>
+            </Container>
+        )
+    }
+
 }
 
 export default observer(App);

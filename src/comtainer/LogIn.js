@@ -45,6 +45,7 @@ export class LogIn extends React.Component{
         return (
 
           <div>
+              <h1>Login</h1>
                 <form onSubmit={this.onSubmit}>
                     <input
                         placeholder="Username"
