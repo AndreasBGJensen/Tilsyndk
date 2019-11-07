@@ -1,28 +1,46 @@
 import React from 'react'
-import Institutions from "../stores/Institutions";
+import {institution }from "../stores/Institutions";
+import {observable, Observable} from "mobx";
 import InstitutionList from '../List/InstitutionList'
 
 
-const InstitutionsStore = new Institutions();
+
+
 
 class InstitutionView extends React.Component {
+    constructor(props) {
+        super(props);
+            this.state= {
+                user: '',
+                loading: true
+            }
+console.log(props.location.state)
 
-    state = {
-        institutions: [],
     }
 
-    componentDidMount() {
-        //This store is observable and holds the api connection
-        const newdata = InstitutionsStore.Test;
 
-        //Setting the data to this state
-        this.setState({institutions:newdata})
-    }
 
+
+      /*  componentDidMount () {
+            const { handle } = this.props.match.params
+
+            fetch(`http://localhost:8080/rest/mongo/test`)
+                .then((user) => {
+                    this.setState(() => ({ user }))
+                })
+        }
+*/
 
     render() {
         return(
-        <InstitutionList data={this.state.institutions}/>
+        <div>
+            <ul>
+                {institution.testList.map((giraffe,key)=>
+                    <li key={key}>{giraffe}</li>
+                )}
+            </ul>
+            {this.state.loading ? <div>loading...</div> : <div>person</div>}
+        </div>
         )
     }
 }

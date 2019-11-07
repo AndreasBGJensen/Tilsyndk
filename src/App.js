@@ -11,6 +11,7 @@ import SearchInstitution from "./comtainer/SearchInstitution"
 
 import {Switch} from "react-router-dom"
 import Container from "react-bootstrap/Container";
+import institutionView from "./comtainer/InstitutionView"
 
 const vuggestuer = new Institutions();
 
@@ -29,6 +30,7 @@ render()
                         <Route path={"/register"} component={Register}/>
                         <Route path={"/login"} component={LogIn}/>
                         <Route path={"/search"} component={SearchInstitution}/>
+                        <Route path={"/searchResults"} component={institutionView}/>
                     </Switch>
                 </Router>
             </Container>

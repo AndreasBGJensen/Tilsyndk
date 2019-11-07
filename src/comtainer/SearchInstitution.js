@@ -1,5 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {Link} from "react-router-dom"
 
 class SearchInstitution extends React.Component {
     constructor(props) {
@@ -32,9 +33,7 @@ class SearchInstitution extends React.Component {
 
             }
         });
-
-
-        console.log(this.state.fiels)
+  console.log(this.state.fiels)
 
     }
 
@@ -77,7 +76,19 @@ class SearchInstitution extends React.Component {
                     />
                     <span style={{color:'red'}}>{this.state.searchError.zipcode}</span>
                     <br/>
-                    <input type="submit"/>
+
+
+                    <Link to ={{
+                        pathname: "/searchResults",
+                        state:{
+                            name: "Hello"
+                        }
+
+                    }} >
+                        <input type="submit"/>
+                    </Link>
+
+
                 </form>
 
             </div>
