@@ -1,5 +1,40 @@
 import React from 'react'
 import {institution} from '../stores/Institutions'
+import Table from "../List/Table";
+
+
+//Adding itmes to the list.
+const List = ({ list }) => (
+    <ul>
+        {list.map((item,key) => (
+            <ListItem key={key} item={item} />
+        ))}
+    </ul>
+);
+
+//Designing the table
+const ListItem = ({ item }) => (
+   <div>
+    <td>
+    <tr>
+        <div>{item.Navn}</div>
+    </tr>
+   </td>
+       <td>
+           <tr>
+               <div>{item.Adresse}</div>
+           </tr>
+       </td>
+       <td>
+           <tr>
+               <div><a href={item.Link}>{item.Link}</a></div>
+
+           </tr>
+       </td>
+   </div>
+
+
+);
 
 
 class InstitutionView extends React.Component {
@@ -14,16 +49,19 @@ class InstitutionView extends React.Component {
     }
 
 
+
+
+
+
     render() {
         return(
         <div>
+
             <ul>
                 <p>{institution.state}</p>
-                {institution.vuggestuer.map((giraffe,key)=>
-                    <li key={key}><a>Institutions Navn</a>{giraffe.Navn} <a>Adresse</a> {giraffe.Adresse}</li>
-                )}
+                <List list={institution.vuggestuer}/>
+                <br/>
             </ul>
-            {this.state.loading ? <div>loading...</div> : <div>person</div>}
         </div>
         )
     }
