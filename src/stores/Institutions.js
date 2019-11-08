@@ -1,20 +1,56 @@
-import data from './test.json';
+
 import {decorate, observable} from "mobx";
 
-export default class Institutions {
-    TestList = ["100 meter skoven","7 springeren","Børnehaven Bøgely"];
 
-    kinderGardensKBH = data;
-    /*kinderGardensKBH = [{Name:"100 meter skoven",Quality:"less wow"},
-        {Name:"7 springeren",Quality:"much wow"}]*/
-    //kinderGardensLyngbyTaarbeak = [{"Navn":"Børnehaven Bøgely","Quality":"so so"}]
-    //CophagenMunicipality=[{"2200":("100 meterskoven","7-springeren"),"2100":("","")}]
+const states = {LOADING:"LOAD", DONE:"DONE", FAILED:"FAILED"}
+
+
+export default class Institutions{
+state = states.DONE;
+
+    vuggestuer = [];
+
+
+
+    constructor() {
+        //Loading data when it when the store is initialized.
+        this.fetchItem();
+    }
+
+
+//The fetchcall
+    fetchItem (){
+
+        this.state = states.LOADING;
+        fetch("http://localhost:8080/rest/mongo/test")
+            .then((response)=> {
+                console.log(response);
+                response.json().then((json)=> {
+                    this.test = json;
+                    console.log(this.test)
+                    this.vuggestuer = json;
+                    this.state = states.DONE;
+                })
+            })
+            .catch((error)=>{
+                console.log(error)
+                this.state = states.FAILED;
+            });
+    }
+
+
+
 }
 
+
+
+
+
+
+
 decorate(Institutions,{
-    TestList:observable,
-    kinderGardensKBH: observable,
-    kinderGardensLyngbyTaarbeak: observable
+    vuggestuer:observable,
+
 });
 
 export const institution = new Institutions();
