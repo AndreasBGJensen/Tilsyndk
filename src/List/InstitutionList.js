@@ -30,13 +30,7 @@ const InstitutionList = ({data})=>{
 
                 </thead>
                 <tbody>
-                {
-                data.map((index) => {
-                    return(
-                        institutionRow({index})
-                    )
-                })
-                }
+
                 </tbody>
             </table>
         </div>

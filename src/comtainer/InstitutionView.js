@@ -1,10 +1,5 @@
 import React from 'react'
-import {institution }from "../stores/Institutions";
-import {observable, Observable} from "mobx";
-import InstitutionList from '../List/InstitutionList'
-
-
-
+import {institution} from '../stores/Institutions'
 
 
 class InstitutionView extends React.Component {
@@ -12,31 +7,20 @@ class InstitutionView extends React.Component {
         super(props);
             this.state= {
                 user: '',
-                loading: true
+                loading: ''
             }
-console.log(props.location.state)
+    console.log(props.location.state)
 
     }
 
-
-
-
-      /*  componentDidMount () {
-            const { handle } = this.props.match.params
-
-            fetch(`http://localhost:8080/rest/mongo/test`)
-                .then((user) => {
-                    this.setState(() => ({ user }))
-                })
-        }
-*/
 
     render() {
         return(
         <div>
             <ul>
-                {institution.testList.map((giraffe,key)=>
-                    <li key={key}>{giraffe}</li>
+                <p>{institution.state}</p>
+                {institution.vuggestuer.map((giraffe,key)=>
+                    <li key={key}><a>Institutions Navn</a>{giraffe.Navn} <a>Adresse</a> {giraffe.Adresse}</li>
                 )}
             </ul>
             {this.state.loading ? <div>loading...</div> : <div>person</div>}
